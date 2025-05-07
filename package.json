@@ -6,11 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
     "test": "tsc --noEmit && prettier --check .",
     "prepare": "husky",
-    "postinstall": "cd server && npm install --include=dev",
-    "start": "cd server && npm start"
+    "postinstall": "cd server && npm install"
   },
   "keywords": [],
   "author": "",
@@ -32,9 +30,5 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "serve-static": "^2.2.0"
-  },
-  "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=7.0.0"
   }
 }
