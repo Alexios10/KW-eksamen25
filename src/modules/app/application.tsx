@@ -12,11 +12,11 @@ import { Stroke, Style } from "ol/style";
 
 useGeographic();
 
-export default function Application() {
+export function Application() {
   const osmLayer = new TileLayer({ source: new OSM() });
   const municipalityLayer = new VectorLayer({
     source: new VectorSource({
-      url: "/geojson/Fylker Norge.geojson",
+      url: `/KW-eksamen25/geojson/Fylker Norge.geojson`,
       format: new GeoJSON(),
     }),
     style: new Style({
