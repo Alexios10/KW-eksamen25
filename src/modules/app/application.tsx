@@ -12,32 +12,26 @@ import { Stroke, Style } from "ol/style";
 
 useGeographic();
 
-const osmLayer = new TileLayer({ source: new OSM() });
-const municipalityLayer = new VectorLayer({
-  source: new VectorSource({
-    url: "/geojson/Fylker Norge.geojson",
-    format: new GeoJSON(),
-  }),
-  style: new Style({
-    stroke: new Stroke({
-      color: "blue",
-      width: 2,
+export default function Application() {
+  const osmLayer = new TileLayer({ source: new OSM() });
+  const municipalityLayer = new VectorLayer({
+    source: new VectorSource({
+      url: "/geojson/Fylker Norge.geojson",
+      format: new GeoJSON(),
     }),
-  }),
-});
-// const schoolLayer = new VectorLayer({
-//   source: new VectorSource({
-//     url: "/kws2100-kartbaserte-websystemer/api/skoler",
-//     format: new GeoJSON(),
-//   }),
-// });
+    style: new Style({
+      stroke: new Stroke({
+        color: "blue",
+        width: 2,
+      }),
+    }),
+  });
 
-const map = new Map({
-  view: new View({ center: [10.8, 59.9], zoom: 8 }),
-  layers: [osmLayer, municipalityLayer],
-});
+  const map = new Map({
+    view: new View({ center: [10.8, 59.9], zoom: 8 }),
+    layers: [osmLayer, municipalityLayer],
+  });
 
-export function Application() {
   const mapRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => map.setTarget(mapRef.current!), []);
   return <div ref={mapRef}></div>;
